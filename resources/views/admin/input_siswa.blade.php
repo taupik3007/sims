@@ -22,27 +22,51 @@
                 <hr class="">
             </div>
             <div class="p-10 ">
-                <form action="\admin\store-user" method="post" enctype="multipart/form-data">
+                <form action="" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="lg:flex">
                     <div class="w-full lg:w-1/2">
                     <span class=" font-semibold ">Nama</span>
-                    <input type="text" id="name" name="nama" class="rounded disabled:bg-slate-300  w-full mt-1 mb-5 outline-none border font-light border-slate-300  focus:border-sky-300  focus:ring-1 p-2 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 " required   placeholder="Masukan Nama..">
+                    <input type="text" id="name"  name="nama" class="rounded disabled:bg-slate-300  w-full mt-1 mb-5 outline-none border font-light border-slate-300  focus:border-sky-300  focus:ring-1 p-2 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 " required   placeholder="Masukan Nama..">
                     <span class=" font-semibold mt-2">NIS</span>
-                    <input  class="rounded disabled:bg-slate-300  w-full mt-1 mb-5 outline-none border border-slate-300 font-light  focus:border-sky-300  focus:ring-1 p-2 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700  " id="nis" name="nis" placeholder="Masukan NIS.." required  type="text">
+                    <input minlength="8"  class="rounded disabled:bg-slate-300  w-full mt-1 mb-5 outline-none border border-slate-300 font-light  focus:border-sky-300  focus:ring-1 p-2 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700  @error('nis') is-invalid @enderror " id="nis" name="nis" placeholder="Masukan NIS.." required  type="text">
+                    @error('nis')
+                    <div class="invalid-feedback text-pink-700 ">
+                        {{$message}}
+                    </div>
+                    @enderror
                     <span class=" font-semibold ">Kelas</span>
-                    <input  class="rounded disabled:bg-slate-300  w-full mt-1 mb-5 outline-none border border-slate-300 font-light  focus:border-sky-300  focus:ring-1 p-2 invalid:text-pink-700  invalid:focus:ring-pink-700 invalid:focus:border-pink-700  " id="class" name="kelas" type="text " required  placeholder="Masukan Kelas..">
+                    <select class="rounded disabled:bg-slate-300  w-full mt-1 mb-5 outline-none border border-slate-300 font-light  focus:border-sky-300  focus:ring-1 p-2  invalid:focus:ring-pink-700 invalid:focus:border-pink-700 " id="gender" name="kelas"  required id="">
+                    <option class="" value="">Pilih</option>
+                    @foreach($class as $kelas)
+                   
+                        <option value="{{$kelas->id_class}}">{{$kelas->class_name  }}&nbsp{{$kelas->major_name}}&nbsp {{$kelas->class_number}}</option>
+                        
+
+                    @endforeach
+                    </select>
+                    
+                    
+                    
+                    
+                    
+                    
                     <span class=" font-semibold ">Agama</span>
                     <input  class="rounded disabled:bg-slate-300  w-full mt-1 mb-5 outline-none border border-slate-300 font-light  focus:border-sky-300  focus:ring-1 p-2 invalid:text-pink-700   invalid:focus:ring-pink-700 invalid:focus:border-pink-700  " id="religion" name="agama" type="text" required  placeholder="Masukan Agama..">
                     <span class=" font-semibold mt-2">Jenis Kelamin</span>
-                    <select name="" class="rounded disabled:bg-slate-300  w-full mt-1 mb-5 outline-none border border-slate-300 font-light  focus:border-sky-300  focus:ring-1 p-2  invalid:focus:ring-pink-700 invalid:focus:border-pink-700 " id="gender" name="jk"  required id="">
+                    <select class="rounded disabled:bg-slate-300  w-full mt-1 mb-5 outline-none border border-slate-300 font-light  focus:border-sky-300  focus:ring-1 p-2  invalid:focus:ring-pink-700 invalid:focus:border-pink-700 " id="gender" name="jk"  required id="">
                         <option class="" value="">Pilih</option>
                         <option value="1">Laki-laki</option>
                         <option value="2">Perempuan</option>
                     </select>
                     <span class=" font-semibold ">Email</span>
-                    <input  class="rounded font-light disabled:bg-slate-300   invalid:mb-0 w-full mt-1  outline-none border border-slate-300  focus:border-sky-300  focus:ring-1 p-2 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " id="email" name="email" type="email"   placeholder="Masukan email..">
-                    <p class="invisible peer-invalid:visible text-pink-700 font-light">Email tidak valdi!</p>
+                    <input  class="rounded font-light disabled:bg-slate-300   invalid:mb-0 w-full mt-1  outline-none border border-slate-300  focus:border-sky-300  focus:ring-1 p-2 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer @error('email') is-invalid @enderror" id="email" name="email" type="email"   placeholder="Masukan email..">
+                    <p class="invisible peer-invalid:visible text-pink-700 font-light ">Email tidak valdi!</p>
+                    @error('email')
+                    <div class="invalid-feedback text-pink-700 ">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="w-full lg:w-1/2 sm:block lg:ml-4">
                     
@@ -56,9 +80,14 @@
                           file:rounded file:border-0
                           file:text-sm file:font-semibold
                           file:bg-slate-300 file:text-slate-700
-                          hover:file:bg-slate-200 mb-2
+                          hover:file:bg-slate-200 mb-2 @error('foto') is-invalid @enderror
                         "/>
                       </label>
+                      @error('foto')
+                    <div class="invalid-feedback text-pink-700 ">
+                        {{$message}}
+                    </div>
+                    @enderror
                     <span class="font-semibold">Alamat</span>
                     <textarea id="address" name="alamat" class="rounded font-light disabled:bg-slate-300   w-full mt-1 mb-5 outline-none border border-slate-300  focus:border-sky-300  focus:ring-1 p-2  invalid:focus:ring-pink-700 invalid:focus:border-pink-700 " required  id="" cols="30" placeholder="Masukan Alamat.." rows="10"></textarea>
                     </div>

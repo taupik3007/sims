@@ -25,4 +25,4 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/profile/{nis}',[ProfileController::class,'index']);
 Route::get('/admin/create-user',[UserController::class, 'index']);
-Route::post('/admin/store-user',[UserController::class, 'store']);
+Route::post('/admin/create-user',[UserController::class, 'store']);
