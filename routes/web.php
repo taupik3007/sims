@@ -23,6 +23,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/profile/{nis}',[ProfileController::class,'index']);
+Route::get('/profile/{nis}/student',[ProfileController::class,'index']);
 Route::get('/admin/create-user',[UserController::class, 'index']);
 Route::post('/admin/create-user',[UserController::class, 'store']);

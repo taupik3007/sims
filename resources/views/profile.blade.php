@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,14 +66,18 @@
            <div class="profile-card-3">
             <div class="card">
 			 <div class="user-fullimage">
-			   <img src="{{asset('assets/images/avatars/avatar-22.png')}}" alt="user avatar" class="card-img-top">
+			   <img src="{{asset('storage/'.$user->image)}}" alt="user avatar" class="card-img-top">
 			    <div class="details">
 			      <h5 class="mb-1 text-white ml-3">{{$user->name}}</h5>
-				  <h6 class="text-white ml-3">Senior Designer</h6>
+				 
 				 </div>
 			  </div>
-            <div class="card-body text-center">
-             <p>Lorem Ipsum available, but the majority have suffered</p>
+            <div class="card-body text-center mb-3">
+              <div class="visible-print text-center">
+                {!! QrCode::size(200)->generate(Request::url()); !!}
+                {{-- <p>Scan disini.</p> --}}
+            </div>
+
 				   
 
 				   
@@ -103,11 +108,15 @@
                             <p>
                                 {{$user->nis}}
                             </p>
-                            <h6>NIS</h6>
+                            <h6>Kelas</h6>
+                          <p>
+                              {{$user->class_name}}&nbsp{{$user->major_name}}&nbsp{{$user->class_number}}
+                          </p>
                           
                             <h6>TTL</h6>
+                            {{$user->date}}
                             <p>
-                                {{$user->user.created_at }}
+                                
                             </p>
                             <h6>Agama</h6>
                             <p>
@@ -116,9 +125,13 @@
                             
                         </div>
                         <div class="col-md-6">
+                        <h6>Email</h6>
+                          <p>
+                              {{$user->email}}
+                          </p>
                           <h6>Jurusan</h6>
                           <p>
-                              {{$user->major}}
+                              {{$user->major_name}}
                           </p>
                           
                           <h6>Alamat</h6>

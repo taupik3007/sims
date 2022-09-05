@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     public function index($nis){
-        $user = User::join('data_users','users.id','=','data_users.user_id')->
+        $user = User::join('data_users','users.id_user','=','data_users.user_id')->join('class','data_users.class_id','=','class.id_class')->join('majors','class.major_id','=','majors.id_major')->
         whereNis($nis)->first();
-        // dd($data);
+    
+
+       $date= $user->date;
+        // dd($date);
         if($user != FALSE){
             return view('profile',compact(['user']));
         }else{
