@@ -11,7 +11,7 @@ class ProfileController extends Controller
         whereNis($nis)->first();
     
 
-       $date= $user->date;
+    //    $date= $user->date;
         // dd($date);
         if($user != FALSE){
             return view('profile',compact(['user']));

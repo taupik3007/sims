@@ -74,7 +74,7 @@
 			  </div>
             <div class="card-body text-center mb-3">
               <div class="visible-print text-center">
-                {!! QrCode::size(200)->generate(Request::url()); !!}
+                {!! QrCode::format('png')->generate(Request::url()); !!}
                 {{-- <p>Scan disini.</p> --}}
             </div>
 
