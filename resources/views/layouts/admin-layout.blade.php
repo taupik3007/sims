@@ -37,7 +37,7 @@
    <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
      <div class="brand-logo">
       <a href="index.html">
-       <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+       <img src="{{ asset('assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
        <h5 class="logo-text">RockerAdmin</h5>
      </a>
 	 </div>
@@ -76,9 +76,9 @@
         </ul>
       </li>
       <li>
-        <a href="calendar.html" class="waves-effect">
-          <i class="icon-calendar"></i> <span>Calendar</span>
-          <small class="badge float-right badge-info">New</small>
+        <a href="/admin/create-class" class="waves-effect">
+          <i class="fa fa-users"></i> <span>Tambah Kelas</span>
+         
         </a>
       </li>
 	  
@@ -116,7 +116,7 @@
           <li class="list-group-item">
           <a href="javaScript:void();">
            <div class="media">
-             <div class="avatar"><img class="align-self-start mr-3" src="assets/images/avatars/avatar-1.png" alt="user avatar"></div>
+             <div class="avatar"><img class="align-self-start mr-3" src="{{ asset('assets/images/avatars/avatar-1.png')}}" alt="user avatar"></div>
             <div class="media-body">
             <h6 class="mt-0 msg-title">Jhon Deo</h6>
             <p class="msg-info">Lorem ipsum dolor sit amet...</p>
@@ -128,7 +128,7 @@
           <li class="list-group-item">
           <a href="javaScript:void();">
            <div class="media">
-             <div class="avatar"><img class="align-self-start mr-3" src="assets/images/avatars/avatar-2.png" alt="user avatar"></div>
+             <div class="avatar"><img class="align-self-start mr-3" src="{{ asset('assets/images/avatars/avatar-2.png')}}" alt="user avatar"></div>
             <div class="media-body">
             <h6 class="mt-0 msg-title">Sara Jen</h6>
             <p class="msg-info">Lorem ipsum dolor sit amet...</p>
@@ -140,7 +140,7 @@
           <li class="list-group-item">
           <a href="javaScript:void();">
            <div class="media">
-             <div class="avatar"><img class="align-self-start mr-3" src="assets/images/avatars/avatar-3.png" alt="user avatar"></div>
+             <div class="avatar"><img class="align-self-start mr-3" src="{{ asset('assets/images/avatars/avatar-3.png')}}" alt="user avatar"></div>
             <div class="media-body">
             <h6 class="mt-0 msg-title">Dannish Josh</h6>
             <p class="msg-info">Lorem ipsum dolor sit amet...</p>
@@ -152,7 +152,7 @@
           <li class="list-group-item">
           <a href="javaScript:void();">
            <div class="media">
-             <div class="avatar"><img class="align-self-start mr-3" src="assets/images/avatars/avatar-4.png" alt="user avatar"></div>
+             <div class="avatar"><img class="align-self-start mr-3" src="{{ asset('assets/images/avatars/avatar-4.png')}}" alt="user avatar"></div>
             <div class="media-body">
             <h6 class="mt-0 msg-title">Katrina Mccoy</h6>
             <p class="msg-info">Lorem ipsum dolor sit amet.</p>
@@ -222,13 +222,13 @@
     </li>
     <li class="nav-item">
       <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
-        <span class="user-profile"><img src="assets/images/avatars/avatar-17.png" class="img-circle" alt="user avatar"></span>
+        <span class="user-profile"><img src="{{ asset('assets/images/avatars/avatar-17.png')}}" class="img-circle" alt="user avatar"></span>
       </a>
       <ul class="dropdown-menu dropdown-menu-right">
        <li class="dropdown-item user-details">
         <a href="javaScript:void();">
            <div class="media">
-             <div class="avatar"><img class="align-self-start mr-3" src="assets/images/avatars/avatar-17.png" alt="user avatar"></div>
+             <div class="avatar"><img class="align-self-start mr-3" src="{{ asset('assets/images/avatars/avatar-17.png')}}" alt="user avatar"></div>
             <div class="media-body">
             <h6 class="mt-2 user-title">Katrina Mccoy</h6>
             <p class="user-subtitle">mccoy@example.com</p>
@@ -257,12 +257,8 @@
     <div class="container-fluid">
 
       <!--Start Dashboard Content-->
-	  
-     
-	  
-       <!--End Dashboard Content-->
-
-    </div>
+	  @yield('content')
+    
     <!-- End container-fluid-->
     
     </div><!--End content-wrapper-->
@@ -284,8 +280,8 @@
 
   <!-- Bootstrap core JavaScript-->
   <script src="{{ asset('assets/js/jquery.min.js')}}"></script>
-  <script src="assets/js/popper.min.js')}}"></script>
-  <script src="assets/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('assets/js/popper.min.js')}}"></script>
+  <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
 	
   <!-- simplebar js -->
   <script src="{{ asset('assets/plugins/simplebar/js/simplebar.js')}}"></script>
