@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ProfileController extends Controller
 {
@@ -23,9 +24,11 @@ class ProfileController extends Controller
 
        
     }
-    public function download($nis)
+    public function download()
     {
-       $user = QrCode::size(200)->generate(url('https://siswa.smkmahaputra.sch.id/profile/12312311/student')); 
-        return response()->download(QrCode::size(200)->format('png')->generate(url('https://siswa.smkmahaputra.sch.id/profile/12312311/student')));
+        $pdf = Pdf::loadView('invoice');
+        return $pdf->download('invoice.pdf');
+    //    $user = QrCode::size(200)->generate()); 
+    //     return response()->download(QrCode::size(200)->format('png')->generate(url('https://siswa.smkmahaputra.sch.id/profile/12312311/student')));
     }
 }
