@@ -15,8 +15,8 @@ use App\Http\Controllers\Admin\ClassController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/admin/create/class',[ClassController::class,'index']);
+Route::get('/admin/list/class',[ClassController::class,'index']);
+Route::get('/admin/create/class',[ClassController::class,'create']);
 Route::post('/admin/create/class',[ClassController::class,'store']);
 Route::get('/admin/create/user',[UserController::class, 'index']);
 Route::post('/admin/create/user',[UserController::class, 'store']);

@@ -28,6 +28,6 @@ Route::get('/profile/{nis}/student',[ProfileController::class,'index']);
 
 Route::get('/qr-download/{nis}',[profileController::class, 'download']);
 Route::get('/coba', function(){
-    return view('invoice');
+    return view('admin.coba');
 });
 

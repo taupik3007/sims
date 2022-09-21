@@ -12,6 +12,14 @@ use App\Models\Major;
 class ClassController extends Controller
 {
    function index(){
+      $class = Clas::join('majors','majors.id_major','=','class.major_id')->get();
+      // dd($class);
+      return view('admin.list_class',compact(['class']));
+      // return view('admin.coba');
+   }
+
+
+   function create(){
     $major = Major::all();
     // dd($major);
     return view('admin.create-class',compact(['major']));

@@ -77,6 +77,7 @@
                 {!! QrCode::size(200)->generate(Request::url()); !!}
                 {{-- <p>Scan disini.</p> --}}
             </div>
+            <a href="/qr-download/{{$user->nis}}" class="btn btn-primary btn-sm mt-4">unduh QR</a>
 
 				   
 
@@ -137,6 +138,16 @@
                           <h6>Alamat</h6>
                           <p>
                               {{$user->address}}
+                          </p>
+                          <h6>Status Siswa</h6>
+                          <p>
+                              @if ($user->status == 1)
+                                  Aktif
+                                @else
+                                  Tidak Aktif
+                              @endif
+
+
                           </p>
                         </div>
                        
