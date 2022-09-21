@@ -24,9 +24,11 @@ class ProfileController extends Controller
 
        
     }
-    public function download()
+    public function download($nis)
     {
-        $pdf = Pdf::loadView('invoice');
+        $user = User::join('data_users','users.id_user','=','data_users.user_id')->join('class','data_users.class_id','=','class.id_class')->join('majors','class.major_id','=','majors.id_major')->
+        whereNis($nis)->first();
+        $pdf = Pdf::loadView('invoice',compact(['user']));
         return $pdf->download('invoice.pdf');
     //    $user = QrCode::size(200)->generate()); 
     //     return response()->download(QrCode::size(200)->format('png')->generate(url('https://siswa.smkmahaputra.sch.id/profile/12312311/student')));
