@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ClassController;
+use App\Http\Controllers\Admin\QrController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ Route::get('/admin/create/class',[ClassController::class,'create']);
 Route::post('/admin/create/class',[ClassController::class,'store']);
 Route::get('/admin/create/user',[UserController::class, 'index']);
 Route::post('/admin/create/user',[UserController::class, 'store']);
+Route::get('/admin/download/{class}/qr',[QrController::class, 'index']);
